@@ -100,6 +100,9 @@ async function displayGlobalTimeline() {
           },
         ],
       },
+      tooltips: {
+        mode: "index",
+      },
     },
   });
 }
@@ -247,19 +250,6 @@ async function displayTopFive() {
     }
   });
 
-  // HIGHEST RECOVERY RATE
-  // let bestCountry;
-  // let bestRR = 0;
-  // for (let i = 0; i < countryData.length; i++) {
-  //   const currRR = countryData[i].recovered / countryData[i].cases;
-
-  //   if (currRR > bestRR) {
-  //     bestRR = currRR;
-  //     bestCountry = countryData[i].country;
-  //   }
-  // }
-  // console.log(bestCountry, bestRR);
-
   // DISPLAY ALL COUNTRIES
   const tableBody = document.querySelector("#table-body");
   countryData.forEach((el, ind) => {
@@ -314,6 +304,11 @@ async function displayTopFive() {
           borderWidth: 2,
         },
       ],
+    },
+    options: {
+      tooltips: {
+        mode: "index",
+      },
     },
   });
 }
