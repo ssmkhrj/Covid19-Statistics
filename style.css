@@ -102,6 +102,15 @@ th:nth-child(5) {
   }
 }
 
+/* ====== */
+/* LOADER */
+/* ====== */
+.spinner-grow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 /* =========== */
 /* COVID VIRUS */
 /* =========== */

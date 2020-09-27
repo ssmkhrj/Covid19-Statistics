@@ -5,11 +5,20 @@ let allCountries = {};
 //   virus.style.top = `${Math.random() * 100 - 15}%`;
 //   virus.style.left = `${ind * 10 + 5}%`;
 // });
+getAll();
 
-getCountries();
-displayGlobalData();
-displayGlobalTimeline();
-displayNewCases();
+async function getAll() {
+  // All Tasks
+  await Promise.all([
+    getCountries(),
+    displayGlobalData(),
+    displayGlobalTimeline(),
+    displayNewCases(),
+  ]);
+
+  document.querySelector(".spinner-grow").classList.add("d-none");
+  document.querySelector(".main-content").classList.remove("d-none");
+}
 
 async function getGlobalTimeline() {
   const response = await fetch(`https://covid19-api.org/api/timeline`);

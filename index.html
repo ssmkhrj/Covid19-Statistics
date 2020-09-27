@@ -51,133 +51,139 @@
       <img class="virus" id="v12" src="./assets/virus.png" />
     </header>
 
-    <div class="container">
-      <p class="text-muted text-center" id="last-update"></p>
-      <!-- <h1 class="text-secondary" style="font-weight: 700">Cases Globally</h1> -->
-      <!-- GLOBAL CARDS -->
-      <div class="row justify-content-center" id="global-cards">
-        <div
-          class="card col-md-3 mx-4 mb-4 border border-style border-info text-info shadow"
-          style="padding: 0; background: #17a2b832"
-        >
-          <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
-            <h2 class="card-title global-card-title"></h2>
-            <p class="card-text h5 global-card-p">Confirmed</p>
-          </div>
-        </div>
-
-        <div
-          class="card col-md-3 mx-4 mb-4 border border-style border-success text-success shadow"
-          style="padding: 0; background: #28a74532"
-        >
-          <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
-            <h2 class="card-title global-card-title"></h2>
-            <p class="card-text h5 global-card-p">Recovered</p>
-          </div>
-        </div>
-
-        <div
-          class="card col-md-3 mx-4 mb-4 border border-style border-danger text-danger shadow"
-          style="padding: 0; background: #dc354532"
-        >
-          <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
-            <h2 class="card-title global-card-title"></h2>
-            <p class="card-text h5 global-card-p">Deaths</p>
-          </div>
-        </div>
-      </div>
+    <div class="spinner-grow" style="width: 3rem; height: 3rem" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
 
-    <!-- GLOBAL GRAPHS -->
-    <div class="container mt-2">
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card border-style border shadow">
-            <div class="card-body">
-              <div
-                class="card-title"
-                style="font-family: 'Roboto', sans-serif; font-weight: 700"
-              >
-                5 Most Affected Countries
-              </div>
-              <canvas id="top-five" width="1000" height="1200"></canvas>
+    <div class="main-content d-none">
+      <div class="container">
+        <p class="text-muted text-center" id="last-update"></p>
+        <!-- <h1 class="text-secondary" style="font-weight: 700">Cases Globally</h1> -->
+        <!-- GLOBAL CARDS -->
+        <div class="row justify-content-center" id="global-cards">
+          <div
+            class="card col-md-3 mx-4 mb-4 border border-style border-info text-info shadow"
+            style="padding: 0; background: #17a2b832"
+          >
+            <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
+              <h2 class="card-title global-card-title"></h2>
+              <p class="card-text h5 global-card-p">Confirmed</p>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <div class="card border-style border shadow">
-            <div class="card-body">
-              <div
-                class="card-title"
-                style="font-family: 'Roboto', sans-serif; font-weight: 700"
-              >
-                Last 30 Days (Global)
-              </div>
-              <canvas id="line-graph" width="1000" height="1200"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="container mt-2">
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card border-style border shadow">
-            <div class="card-body">
-              <div
-                class="card-title"
-                style="font-family: 'Roboto', sans-serif; font-weight: 700"
-              >
-                Countries With Most New Cases
-              </div>
-              <canvas id="new-cases" width="1000" height="1200"></canvas>
+          <div
+            class="card col-md-3 mx-4 mb-4 border border-style border-success text-success shadow"
+            style="padding: 0; background: #28a74532"
+          >
+            <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
+              <h2 class="card-title global-card-title"></h2>
+              <p class="card-text h5 global-card-p">Recovered</p>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <div class="card border-style border shadow">
-            <div class="card-body">
-              <div
-                class="card-title"
-                style="font-family: 'Roboto', sans-serif; font-weight: 700"
-              >
-                INDIA's Fight Against COVID19
-              </div>
-              <canvas id="india-data" width="1000" height="1200"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- TABLE SHOWING ALL COUNTRIES -->
-    <div class="container mb-4 mt-4" style="font-weight: 700">
-      <h1 class="mb-4">COVID19 Affected Countries</h1>
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          id="country-search"
-          placeholder="Search By Country"
-          aria-label="Country"
-          aria-describedby="basic-addon1"
-        />
+          <div
+            class="card col-md-3 mx-4 mb-4 border border-style border-danger text-danger shadow"
+            style="padding: 0; background: #dc354532"
+          >
+            <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
+              <h2 class="card-title global-card-title"></h2>
+              <p class="card-text h5 global-card-p">Deaths</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <table
-        class="table table-sm table-striped table-light table-bordered responsive border border-style"
-      >
-        <thead>
-          <tr class="table-active">
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Confirmed</th>
-            <th scope="col">Recovered</th>
-            <th scope="col">Deaths</th>
-          </tr>
-        </thead>
-        <tbody id="table-body"></tbody>
-      </table>
+
+      <!-- GLOBAL GRAPHS -->
+      <div class="container mt-2">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card border-style border shadow">
+              <div class="card-body">
+                <div
+                  class="card-title"
+                  style="font-family: 'Roboto', sans-serif; font-weight: 700"
+                >
+                  5 Most Affected Countries
+                </div>
+                <canvas id="top-five" width="1000" height="1200"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-style border shadow">
+              <div class="card-body">
+                <div
+                  class="card-title"
+                  style="font-family: 'Roboto', sans-serif; font-weight: 700"
+                >
+                  Last 30 Days (Global)
+                </div>
+                <canvas id="line-graph" width="1000" height="1200"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-2">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card border-style border shadow">
+              <div class="card-body">
+                <div
+                  class="card-title"
+                  style="font-family: 'Roboto', sans-serif; font-weight: 700"
+                >
+                  Countries With Most New Cases
+                </div>
+                <canvas id="new-cases" width="1000" height="1200"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card border-style border shadow">
+              <div class="card-body">
+                <div
+                  class="card-title"
+                  style="font-family: 'Roboto', sans-serif; font-weight: 700"
+                >
+                  INDIA's Fight Against COVID19
+                </div>
+                <canvas id="india-data" width="1000" height="1200"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLE SHOWING ALL COUNTRIES -->
+      <div class="container mb-4 mt-4" style="font-weight: 700">
+        <h1 class="mb-4">COVID19 Affected Countries</h1>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="country-search"
+            placeholder="Search By Country"
+            aria-label="Country"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <table
+          class="table table-sm table-striped table-light table-bordered responsive border border-style"
+        >
+          <thead>
+            <tr class="table-active">
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Confirmed</th>
+              <th scope="col">Recovered</th>
+              <th scope="col">Deaths</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
     </div>
 
     <!-- SEARCH BAR -->
