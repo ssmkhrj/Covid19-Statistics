@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid19 Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="jumbotron bg-dark">
+      <h1 class="header__title">COVID19 STATISTICS</h1>
+      <img class="virus" id="v1" src="./assets/virus.png" />
+      <img class="virus" id="v2" src="./assets/virus.png" />
+      <img class="virus" id="v3" src="./assets/virus.png" />
+      <img class="virus" id="v4" src="./assets/virus.png" />
+      <img class="virus" id="v5" src="./assets/virus.png" />
+      <img class="virus" id="v6" src="./assets/virus.png" />
+      <img class="virus" id="v7" src="./assets/virus.png" />
+      <img class="virus" id="v8" src="./assets/virus.png" />
+      <img class="virus" id="v9" src="./assets/virus.png" />
+      <img class="virus" id="v10" src="./assets/virus.png" />
+      <img class="virus" id="v11" src="./assets/virus.png" />
+      <img class="virus" id="v12" src="./assets/virus.png" />
+    </header>
+
+    <div class="container">
+      <p class="text-muted text-center" id="last-update"></p>
+      <!-- <h1 class="text-secondary" style="font-weight: 700">Cases Globally</h1> -->
+      <!-- GLOBAL CARDS -->
+      <div class="row justify-content-center" id="global-cards">
+        <div
+          class="card col-md-3 mx-4 mb-4 border border-style border-info text-info shadow"
+          style="padding: 0; background: #17a2b832"
+        >
+          <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
+            <h2 class="card-title global-card-title"></h2>
+            <p class="card-text h5 global-card-p">Confirmed</p>
+          </div>
+        </div>
+
+        <div
+          class="card col-md-3 mx-4 mb-4 border border-style border-success text-success shadow"
+          style="padding: 0; background: #28a74532"
+        >
+          <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
+            <h2 class="card-title global-card-title"></h2>
+            <p class="card-text h5 global-card-p">Recovered</p>
+          </div>
+        </div>
+
+        <div
+          class="card col-md-3 mx-4 mb-4 border border-style border-danger text-danger shadow"
+          style="padding: 0; background: #dc354532"
+        >
+          <div class="card-body text-center" style="padding: 1.25rem 0.5rem">
+            <h2 class="card-title global-card-title"></h2>
+            <p class="card-text h5 global-card-p">Deaths</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOBAL GRAPHS -->
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card border-style border shadow">
+            <div class="card-body">
+              <div
+                class="card-title"
+                style="font-family: 'Roboto', sans-serif; font-weight: 700"
+              >
+                5 Most Affected Countries
+              </div>
+              <canvas id="top-five" width="1000" height="1200"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card border-style border shadow">
+            <div class="card-body">
+              <div
+                class="card-title"
+                style="font-family: 'Roboto', sans-serif; font-weight: 700"
+              >
+                Last 30 Days (Global)
+              </div>
+              <canvas id="line-graph" width="1000" height="1200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card border-style border shadow">
+            <div class="card-body">
+              <div
+                class="card-title"
+                style="font-family: 'Roboto', sans-serif; font-weight: 700"
+              >
+                Countries With Most New Cases
+              </div>
+              <canvas id="new-cases" width="1000" height="1200"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card border-style border shadow">
+            <div class="card-body">
+              <div
+                class="card-title"
+                style="font-family: 'Roboto', sans-serif; font-weight: 700"
+              >
+                INDIA's Fight Against COVID19
+              </div>
+              <canvas id="india-data" width="1000" height="1200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE SHOWING ALL COUNTRIES -->
+    <div class="container mb-4 mt-4" style="font-weight: 700">
+      <h1 class="mb-4">COVID19 Affected Countries</h1>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="country-search"
+          placeholder="Search By Country"
+          aria-label="Country"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <table
+        class="table table-sm table-striped table-light table-bordered responsive border border-style"
+      >
+        <thead>
+          <tr class="table-active">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Recovered</th>
+            <th scope="col">Deaths</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <!-- <div class="container">
+      <div class="form-group mb-5 position-relative">
+        <input
+          type="text"
+          class="form-control mb-2"
+          id="search-bar"
+          placeholder="Search By Country"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+        />
+        <div class="card card-fixed d-none">
+          <div class="card__container list-group list-group-flush"></div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- GLOBAL CARDS -->
+    <!-- <div class="container">
+      <div class="row justify-content-center">
+        <div class="card col-md-3 mx-4 mb-4 bg-info text-white shadow">
+          <div class="card-body text-center">
+            <h2 class="card-title global-card-title"></h2>
+            <p class="card-text h5">Confirmed</p>
+          </div>
+        </div>
+        <div class="card col-md-3 mx-4 mb-4 bg-success text-white shadow">
+          <div class="card-body text-center">
+            <h2 class="card-title global-card-title"></h2>
+            <p class="card-text h5">Recovered</p>
+          </div>
+        </div>
+        <div class="card col-md-3 mx-4 mb-4 bg-danger text-white shadow">
+          <div class="card-body text-center">
+            <h2 class="card-title global-card-title"></h2>
+            <p class="card-text h5">Deaths</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- COUNTRY CARDS -->
+    <!-- <div class="container">
+      <h2 class="text-center country-heading">INDIA</h2>
+      <div class="row justify-content-center">
+        <div class="card col-md-3 mx-4 mb-4 bg-info text-white shadow">
+          <div class="card-body text-center">
+            <h2 class="card-title country-card-title"></h2>
+            <p class="card-text h5">Confirmed</p>
+          </div>
+        </div>
+        <div class="card col-md-3 mx-4 mb-4 bg-success text-white shadow">
+          <div class="card-body text-center">
+            <h2 class="card-title country-card-title"></h2>
+            <p class="card-text h5">Recovered</p>
+          </div>
+        </div>
+        <div class="card col-md-3 mx-4 mb-4 bg-danger text-white shadow">
+          <div class="card-body text-center">
+            <h2 class="card-title country-card-title"></h2>
+            <p class="card-text h5">Deaths</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="wrapper card shadow">
+      <div class="card-body">
+        <canvas id="top-five"></canvas>
+      </div>
+    </div> -->
+
+    <!-- <div class="wrapper card shadow">
+      <div class="card-body">
+        <canvas id="line-graph"></canvas>
+      </div>
+    </div> -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"
+      integrity="sha512-G8JE1Xbr0egZE5gNGyUm1fF764iHVfRXshIoUWCTPAbKkkItp/6qal5YAHXrxEu4HNfPTQs6HOu3D5vCGS1j3w=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

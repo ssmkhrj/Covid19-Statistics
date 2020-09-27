@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.border-style {
+  border-width: 4px !important;
+  border-radius: 0.3rem;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 50px auto;
+  max-width: 900px;
+}
+
+.card-fixed {
+  left: 0;
+  right: 0;
+  position: absolute;
+
+  z-index: 1;
+}
+
+.card__container {
+  margin: 0;
+  height: auto;
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+/* HEADER STYLING */
+.jumbotron {
+  position: relative;
+  background-color: darkolivegreen;
+  border-radius: 0;
+  overflow: hidden;
+
+  display: flex; /*To make the header opaque*/
+}
+
+.global-card-title,
+.global-card-p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 2rem 2rem;
+  }
+}
+
+tr {
+  font-weight: 500;
+}
+
+th:nth-child(1) {
+  width: 5%;
+  text-align: center;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 35%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5),
+th:nth-child(3),
+th:nth-child(4),
+th:nth-child(5) {
+  width: 20%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: right;
+}
+
+.header__title {
+  margin: 0;
+  z-index: 1;
+  font-family: "Carter One", cursive;
+  font-size: 3.5rem;
+  color: whitesmoke;
+  letter-spacing: 5px;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* =========== */
+/* COVID VIRUS */
+/* =========== */
+.virus {
+  position: absolute;
+  opacity: 0.2;
+  height: 6vw;
+  width: 6vw;
+  min-height: 60px;
+  min-width: 60px;
+  animation: rotate 4s linear infinite;
+  display: none;
+}
+
+#v1 {
+  display: block;
+  top: 60%;
+  left: 2%;
+}
+#v2 {
+  display: block;
+  top: -20%;
+  left: 10%;
+}
+#v3 {
+  display: block;
+  top: 20%;
+  left: 17%;
+}
+#v4 {
+  display: block;
+  top: 40%;
+  left: 30%;
+}
+#v5 {
+  display: block;
+  top: 10%;
+  left: 42%;
+}
+#v6 {
+  display: block;
+  top: -10%;
+  left: 50%;
+}
+#v7 {
+  display: block;
+  top: 70%;
+  left: 55%;
+}
+#v8 {
+  display: block;
+  top: 25%;
+  left: 65%;
+}
+#v9 {
+  display: block;
+  top: -15%;
+  left: 75%;
+}
+#v10 {
+  display: block;
+  top: 50%;
+  left: 82%;
+}
+#v11 {
+  display: block;
+  top: -20%;
+  left: 90%;
+}
+
+#v12 {
+  display: block;
+  top: 65%;
+  left: 95%;
+}
+
+/* ============= */
+/* MEDIA QUERIES */
+/* ============= */
+
+@media (max-width: 750px) {
+  .header__title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 490px) {
+  .responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
