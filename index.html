@@ -4,17 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid19 Statistics</title>
+
+    <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- LEAFLET -->
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
     />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <!-- FONT AWESOME -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
       integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+
+    <!-- BOOTSTRAP -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
     <script
@@ -35,7 +54,7 @@
     <link type="text/css" rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <header class="jumbotron bg-dark">
+    <header class="jumbotron bg-dark mb-3">
       <h1 class="header__title">COVID19 STATISTICS</h1>
       <img class="virus" id="v1" src="./assets/virus.png" />
       <img class="virus" id="v2" src="./assets/virus.png" />
@@ -51,9 +70,14 @@
       <img class="virus" id="v12" src="./assets/virus.png" />
     </header>
 
+    <!-- SPINNER -->
     <div class="spinner-grow" style="width: 3rem; height: 3rem" role="status">
       <span class="sr-only">Loading...</span>
     </div>
+
+    <!-- ALL THE CONTENTS -->
+    <!-- LEAFLET MAP -->
+    <div id="mapid" style="height: 230px; margin-bottom: 1rem"></div>
 
     <div class="main-content d-none">
       <div class="container">

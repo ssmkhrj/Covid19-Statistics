@@ -1,12 +1,9 @@
-// const viruses = document.querySelectorAll(".virus");
 let allCountries = {};
+let allCountriesLatLon = {};
 
-// viruses.forEach((virus, ind) => {
-//   virus.style.top = `${Math.random() * 100 - 15}%`;
-//   virus.style.left = `${ind * 10 + 5}%`;
-// });
 getAll();
 
+// ====================================================================
 async function getAll() {
   // All Tasks
   await Promise.all([
@@ -132,43 +129,21 @@ async function displayGlobalData() {
   Last Updated: ${new Date(data[3]).toDateString()}`;
 }
 
-async function getCountryData(name) {
-  const alpha2 = name.split(",")[1].trim();
-  const response = await fetch(`https://covid19-api.org/api/status/${alpha2}`);
-  const json = await response.json();
-
-  //Extracting the COUNTRY DATA
-  const currentConfirmed = json.cases;
-  const currentDeaths = json.deaths;
-  const currentRecovered = json.recovered;
-
-  return [currentConfirmed, currentDeaths, currentRecovered];
-}
-
-async function displayCountryData(name) {
-  const data = await getCountryData(name);
-  const cardTitles = document.querySelectorAll(".country-card-title");
-  cardTitles.forEach((cardTitle, ind) => {
-    cardTitle.textContent = data[ind];
-  });
-
-  // Change the Heading
-  const heading = document.querySelector(".country-heading");
-  heading.innerText = name.split(",")[0].trim();
-}
-
 async function getCountries() {
   const response = await fetch("https://covid19-api.org/api/countries");
   const json = await response.json();
 
   // Extracting the name of the Country
   const countries = json.map((el) => [el.name, el.alpha2]);
-  countries.forEach((el) => {
-    allCountries[el[1]] = el[0];
-  });
+
+  for (let el of json) {
+    allCountries[el.alpha2] = el.name;
+    allCountriesLatLon[el.alpha2] = [el.latitude, el.longitude];
+  }
+
   displayTopFive();
 
-  // Selecting DOM elements
+  // Selecting DOM elements (Specific to dropdown search)
   /*
   const cardContainer = document.querySelector(".card__container");
   const card = document.querySelector(".card-fixed");
@@ -250,6 +225,9 @@ async function displayTopFive() {
     }
   });
 
+  // DRAW THE MAP & ADD CIRCLES TO ALL COUNTRIES
+  drawMap(countryData);
+
   // DISPLAY ALL COUNTRIES
   const tableBody = document.querySelector("#table-body");
   countryData.forEach((el, ind) => {
@@ -310,6 +288,45 @@ async function displayTopFive() {
         mode: "index",
       },
     },
+  });
+}
+
+function drawMap(countryData) {
+  const mymap = L.map("mapid").setView([17.5707, -3.9962], 2);
+
+  // THIS FOR USING OPEN STREET MAP TILES
+  const attribution =
+    "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributers";
+  const tileURL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+  const tiles = L.tileLayer(tileURL, { attribution });
+  tiles.addTo(mymap);
+
+  countryData.forEach((el) => {
+    const circleCenter = allCountriesLatLon[el.country];
+    const circleOptions = {
+      color: "red",
+      fillColor: "#f03",
+      fillOpacity: 0.2,
+    };
+    const countryName =
+      allCountries[el.country].length > 8
+        ? el.country
+        : allCountries[el.country];
+    const tooltipText = `
+    <div style="font-weight:700">
+      <div style="display:flex; align-items:center;">
+        <img src="https://www.countryflags.io/${el.country}/flat/32.png"/>
+        <div style="padding-left:2px; font-size:1.2rem">${countryName}</div>
+      </div>
+      <div style="color: #17a2b8">Confirmed: ${el.cases}</div>
+      <div style="color: #28a745">Recovered: ${el.recovered}</div>
+      <div style="color: #dc3545">Deaths: ${el.deaths}</div>
+    </div>
+    `;
+    L.circle(circleCenter, el.cases / 5, circleOptions)
+      .addTo(mymap)
+      .bindPopup(tooltipText);
   });
 }
 
@@ -384,3 +401,29 @@ searchCountry.addEventListener("keyup", (e) => {
     }
   });
 });
+
+// COUNTRY SPECIFIC DATA (NOT BEING USED)
+async function getCountryData(name) {
+  const alpha2 = name.split(",")[1].trim();
+  const response = await fetch(`https://covid19-api.org/api/status/${alpha2}`);
+  const json = await response.json();
+
+  //Extracting the COUNTRY DATA
+  const currentConfirmed = json.cases;
+  const currentDeaths = json.deaths;
+  const currentRecovered = json.recovered;
+
+  return [currentConfirmed, currentDeaths, currentRecovered];
+}
+
+async function displayCountryData(name) {
+  const data = await getCountryData(name);
+  const cardTitles = document.querySelectorAll(".country-card-title");
+  cardTitles.forEach((cardTitle, ind) => {
+    cardTitle.textContent = data[ind];
+  });
+
+  // Change the Heading
+  const heading = document.querySelector(".country-heading");
+  heading.innerText = name.split(",")[0].trim();
+}
